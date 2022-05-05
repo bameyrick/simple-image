@@ -335,17 +335,17 @@ describe('SimpleImage', () => {
     });
   });
 
-  describe('dataURL', () => {
+  describe('toDataURL', () => {
     it('Should draw the updated image', async () => {
       const simpleImage = new SimpleImage(dummyImageString);
 
       await simpleImage.ready;
 
-      expect(simpleImage.getDataURL()).toEqual(dummyImageString);
+      expect(simpleImage.toDataURL()).toEqual(dummyImageString);
 
       simpleImage.setRed(1, 1, 255);
 
-      expect(simpleImage.getDataURL()).not.toEqual(dummyImageString);
+      expect(simpleImage.toDataURL()).not.toEqual(dummyImageString);
     });
   });
 });

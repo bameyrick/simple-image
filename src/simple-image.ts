@@ -154,7 +154,7 @@ export class SimpleImage {
     canvas.getContext('2d')!.drawImage(this.canvas, 0, 0, canvas.width, canvas.height);
   }
 
-  public getDataURL(): string {
+  public toDataURL(): string {
     this.flush();
 
     return this.canvas.toDataURL();

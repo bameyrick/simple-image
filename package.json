@@ -1,7 +1,7 @@
 {
   "name": "simple-image",
   "version": "1.0.0",
-  "description": "Simple image manipulation ",
+  "description": "Simple image manipulation",
   "main": "index.js",
   "scripts": {
     "build": "tsc -p tsconfig.json --outDir dist/",
