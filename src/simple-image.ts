@@ -135,14 +135,41 @@ export class SimpleImage {
     if (width > 0 && height > 0) {
       this.flush();
 
+      const step = 0.5;
+
       const canvas = document.createElement('canvas');
+      const context = canvas.getContext('2d');
 
-      canvas.width = width;
-      canvas.height = height;
+      if (this.width * step > width || this.height * step > height) {
+        const multiplier = 1 / step;
 
-      this.context.drawImage(this.canvas, 0, 0, width, height);
+        let currentWidth = Math.floor(this.width * step);
+        let currentHeight = Math.floor(this.height * step);
 
-      this._canvas = canvas;
+        canvas.width = currentWidth;
+        canvas.height = currentHeight;
+
+        context!.drawImage(this.canvas, 0, 0, currentWidth, currentHeight);
+
+        while (currentWidth * step > width) {
+          currentWidth = Math.floor(currentWidth * step);
+          currentHeight = Math.floor(currentHeight * step);
+
+          context!.drawImage(canvas, 0, 0, currentWidth * multiplier, currentHeight * multiplier, 0, 0, currentWidth, currentHeight);
+        }
+
+        this.canvas.width = width;
+        this.canvas.height = height;
+
+        this.context.drawImage(canvas, 0, 0, currentWidth, currentHeight, 0, 0, this.width, this.height);
+      } else {
+        this.canvas.width = width;
+        this.canvas.height = height;
+
+        this.context.drawImage(this.canvas, 0, 0, this.width, this.height);
+      }
+
+      this.setImageData();
     } else {
       throw new Error(`Cannot set size to a width or height less than or equal to 0`);
     }
@@ -191,9 +218,13 @@ export class SimpleImage {
       this.context.drawImage(image, 0, 0, this.canvas.width, this.canvas.height);
     }
 
-    this.imageData = this.context.getImageData(0, 0, this.canvas.width, this.canvas.height);
+    this.setImageData();
 
     this.resolve();
+  }
+
+  private setImageData(): void {
+    this.imageData = this.context.getImageData(0, 0, this.canvas.width, this.canvas.height);
   }
 
   private getIndex(x: number, y: number): number {

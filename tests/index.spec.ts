@@ -296,10 +296,15 @@ describe('SimpleImage', () => {
 
       await simpleImage.ready;
 
-      simpleImage.setSize(300, 200);
+      simpleImage.setSize(50, 50);
 
-      expect(simpleImage.width).toEqual(300);
-      expect(simpleImage.height).toEqual(200);
+      expect(simpleImage.width).toEqual(50);
+      expect(simpleImage.height).toEqual(50);
+
+      simpleImage.setSize(400, 400);
+
+      expect(simpleImage.width).toEqual(400);
+      expect(simpleImage.height).toEqual(400);
     });
 
     it('Should throw an error if the size is less than or equal to 0', async () => {
