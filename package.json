@@ -11,7 +11,8 @@
     "test-single": "eslint --fix --max-warnings 0 && karma start ./karma.conf.js",
     "tidy-clean": "rm -rf dist coverage",
     "pre-commit": "lint-staged",
-    "prepare-husky": "npx husky-init"
+    "prepare-husky": "npx husky-init",
+    "upgrade-interactive": "npm-check --update"
   },
   "lint-staged": {
     "*.ts": [
@@ -60,6 +61,7 @@
     "karma-typescript": "^5.5.3",
     "karma-typescript-es6-transform": "^5.5.3",
     "lint-staged": "^12.4.1",
+    "npm-check": "^5.9.2",
     "prettier": "^2.6.2",
     "puppeteer": "^13.7.0",
     "remark-cli": "^10.0.1",
