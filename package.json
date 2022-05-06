@@ -7,6 +7,7 @@
     "build": "tsc -p tsconfig.json --outDir dist/",
     "lint": "npm run tidy-clean && eslint",
     "test": "KARMA_SINGLE_RUN=false karma start ./karma.conf.js",
+    "test-single": "npm run lint --fix --max-warnings 0 && karma start ./karma.conf.js",
     "tidy-clean": "rm -rf dist coverage",
     "pre-commit": "lint-staged",
     "prepare-husky": "npx husky-init"
