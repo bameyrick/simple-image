@@ -163,10 +163,15 @@ export class SimpleImage {
 
         this.context.drawImage(canvas, 0, 0, currentWidth, currentHeight, 0, 0, this.width, this.height);
       } else {
+        canvas.width = width;
+        canvas.height = height;
+
+        context!.drawImage(this.canvas, 0, 0, width, height);
+
         this.canvas.width = width;
         this.canvas.height = height;
 
-        this.context.drawImage(this.canvas, 0, 0, this.width, this.height);
+        this.context.drawImage(canvas, 0, 0, this.width, this.height);
       }
 
       this.setImageData();
