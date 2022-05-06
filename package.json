@@ -2,7 +2,8 @@
   "name": "simple-image",
   "version": "1.0.0",
   "description": "Simple image manipulation",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsc -p tsconfig.json --outDir dist/",
     "lint": "npm run tidy-clean && eslint",
