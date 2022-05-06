@@ -222,6 +222,8 @@ An instance of of a pixel within the `SimpleImage`.
 
 | Property | Description                                                       | Type   |
 | -------- | ----------------------------------------------------------------- | ------ |
+| x        | The x coordinate of the pixel                                     | number |
+| y        | The y coordinate of the pixel                                     | number |
 | red      | Gets/sets the red value for the pixel. Number between 0 and 255   | number |
 | green    | Gets/sets the green value for the pixel. Number between 0 and 255 | number |
 | blue     | Gets/sets the blue value for the pixel. Number between 0 and 255  | number |

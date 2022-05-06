@@ -103,22 +103,19 @@ describe('SimpleImage', () => {
   });
 
   describe('From file', () => {
-    it('Should create an image', () => {
-      dummyCanvas.toBlob(
-        blob => async () => {
-          const file = new File([blob], 'fileName.jpg', { type: 'image/jpeg' });
+    it('Should create an image', async () => {
+      const blob = await new Promise(resolve => dummyCanvas.toBlob(resolve));
 
-          const simpleImage = new SimpleImage(file);
+      const file = new File([blob as string], 'fileName.jpg', { type: 'image/jpeg' });
 
-          expect(simpleImage).not.toBeNull();
+      const simpleImage = new SimpleImage(file);
 
-          await simpleImage.ready;
+      expect(simpleImage).not.toBeNull();
 
-          expect(simpleImage.width).toEqual(5);
-          expect(simpleImage.height).toEqual(5);
-        },
-        'image/jpeg'
-      );
+      await simpleImage.ready;
+
+      expect(simpleImage.width).toEqual(5);
+      expect(simpleImage.height).toEqual(5);
     });
   });
 

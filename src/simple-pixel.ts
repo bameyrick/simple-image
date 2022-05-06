@@ -33,7 +33,7 @@ export class SimplePixel {
     this.image.setAlpha(this.x, this.y, value);
   }
 
-  constructor(private readonly image: SimpleImage, private x: number, private y: number) {}
+  constructor(private readonly image: SimpleImage, public readonly x: number, public readonly y: number) {}
 
   public setAllFrom(pixel: SimplePixel): void {
     this.red = pixel.red;
