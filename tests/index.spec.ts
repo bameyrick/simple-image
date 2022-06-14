@@ -15,7 +15,7 @@ describe('SimpleImage', () => {
     dummyCanvas = document.createElement('canvas');
     dummyCanvas.width = dummyImage.width;
     dummyCanvas.height = dummyImage.height;
-    dummyCanvas.getContext('2d').drawImage(dummyImage, 0, 0, dummyImage.width, dummyImage.height);
+    dummyCanvas.getContext('2d')?.drawImage(dummyImage, 0, 0, dummyImage.width, dummyImage.height);
   });
 
   describe('From size', () => {

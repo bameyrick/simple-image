@@ -20,7 +20,7 @@ export class SimpleImage {
   /**
    * A promise that resolves once the image has loaded and is ready
    */
-  public readonly ready = new Promise(resolve => (this.resolve = resolve as never));
+  public ready: Promise<never>;
 
   /**
    * Gets all the pixels in the images
@@ -59,6 +59,8 @@ export class SimpleImage {
   private imageData?: ImageData;
 
   constructor(sourceOrWidth: number | HTMLImageElement | string | File | SimpleImage | HTMLCanvasElement, height?: number) {
+    this.ready = new Promise(resolve => (this.resolve = resolve as never));
+
     if (
       sourceOrWidth instanceof HTMLImageElement ||
       sourceOrWidth instanceof File ||
